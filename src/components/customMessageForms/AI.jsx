@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import MessageFormUl from './messageFormUl';
+import MessageFormUl from './MessageFormUl.jsx';
 import { usePostAiTextMutation } from '@/state/api';
 
 function AI({ props, activeChat }) {
