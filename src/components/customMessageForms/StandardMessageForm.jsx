@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import MessageFormUl from './messageFormUl';
+import MessageFormUl from './MessageFormUl.jsx';
 
 function StandardMessageForm({ props, activeChat }) {
     const [message, setMessage] = useState("");
