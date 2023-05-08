@@ -6,7 +6,7 @@ function Login( {setUser, setSecret }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [triggerLogin, resultLogin] = usePostLoginMutation();
-    const [triggerSignUp] = usePostSignUpMutation();
+    const [triggerSignUp, resultSignUp] = usePostSignUpMutation();
 
     const handleLogin = () => {
         triggerLogin({ username, password });
@@ -20,8 +20,18 @@ function Login( {setUser, setSecret }) {
         if(resultLogin.data?.response) {
             setUser(username);
             setSecret(password);
+        } else if(resultLogin.isError){
+            alert("username or password incorrect!");
         }
-    }, [resultLogin.data]); //eslint-disable-line
+    }, [resultLogin]); //eslint-disable-line
+
+    useEffect(() => {
+        if(resultSignUp.isError){
+            alert("username already existing!");
+        } else if(resultSignUp.data?.response){
+            alert("Register successful");
+        }
+    }, [resultSignUp]); //eslint-disable-line
 
   return <div className='login-page'>
     <div className='login-container'>
